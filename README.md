@@ -1,0 +1,3 @@
+# selectionScreenshotExtension
+# selectionScreenshotExtension
+# selectionScreenshotExtension2
