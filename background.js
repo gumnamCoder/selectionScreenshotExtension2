@@ -3,7 +3,7 @@ chrome.runtime.onMessage.addListener((req, sender, res) => {
     chrome.tabs.captureVisibleTab(null, { format: 'png' }, (image) => {
       res({ message: 'image', image });
     });
-    return true; // Indicates that the response will be sent asynchronously
+    return true; 
   }
 });
 

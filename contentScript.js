@@ -1,14 +1,10 @@
-
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   if (message.action === 'startSelection') {
-    startSelection()
+    startSelection();
   }
 });
 
 function startSelection() {
-
-  console.log("I am entering inside the startSelection function")
-
   var selectionOverlay = document.createElement('div');
   selectionOverlay.style.position = 'fixed';
   selectionOverlay.style.top = '0';
@@ -60,13 +56,14 @@ function startSelection() {
       width: parseInt(selectionRect.style.width),
       height: parseInt(selectionRect.style.height)
     };
-    console.log("my reactangle's coordinates are:", screenshotRect);
+
     chrome.runtime.sendMessage({ message: 'capture' }, (response) => {
       if (response.message === 'image') {
         var image = response.image;
         captureElement(image, screenshotRect);
       }
     });
+
     selectionOverlay.remove();
     selectionRect.remove();
   }
@@ -74,43 +71,53 @@ function startSelection() {
   window.addEventListener('mousedown', handleMouseDown);
 }
 
-function captureElement(image,screenshotRect) {
-  console.log("hey! I am inside the captureElement function", screenshotRect);
-  console.log("the image:",image)
-  window.scrollTo(screenshotRect.x, screenshotRect.y);
-  document.documentElement.style.overflow = 'hidden';
-  document.body.style.overflow = 'hidden';
-  document.body.style.margin = '0';
+function captureElement(image, screenshotRect) {
+  var dpr = window.devicePixelRatio || 1;
+  var preserve = true;
+  var format = 'png';
+
+  var top = screenshotRect.y * dpr;
+  var left = screenshotRect.x * dpr;
+  var width = screenshotRect.width * dpr;
+  var height = screenshotRect.height * dpr;
+  var w = (dpr !== 1 && preserve) ? width : screenshotRect.width;
+  var h = (dpr !== 1 && preserve) ? height : screenshotRect.height;
 
   var canvas = document.createElement('canvas');
-  canvas.width = screenshotRect.width;
-  canvas.height = screenshotRect.height;
+  canvas.width = w;
+  canvas.height = h;
 
-  console.log("printing the canvas:", canvas);
-  
-  var img = new Image()
-  
-  img.onload = ()=>{
-    var context = canvas.getContext('2d');
-    context.drawImage(
-      img,
-      screenshotRect.x,
-      screenshotRect.y,
-      screenshotRect.width,
-      screenshotRect.height,
-      0,
-      0,
-      screenshotRect.width,
-      screenshotRect.height
-    );
-    console.log("error iske baad aa raha");
-    var dataUrl = canvas.toDataURL('image/png');
-    console.log("dataURL",dataUrl)
-  }
+
+
+  var img = new Image();
+  img.onload = function () {
+    // Introduce a small delay before capturing the screenshot
+    setTimeout(function() {
+      var context = canvas.getContext('2d');
+      context.drawImage(
+        img,
+        left, top,
+        width, height,
+        0, 0,
+        w, h
+      );
+
+      var dataUrl = canvas.toDataURL('image/' + format);
+      downloadScreenshot(dataUrl);
+      chrome.runtime.sendMessage({ action: 'openPopup', dataUrl: dataUrl });
+    }, 1000); // Adjust the delay (in milliseconds) as needed
+  };
+
   img.src = image;
-  console.log("canvas after drawImage:", canvas)
-  console.log("dataURL is:", dataUrl) 
-
 }
+
+function downloadScreenshot(dataUrl) {
+  // console.log("I am inside the download function")
+  var link = document.createElement('a');
+  link.href = dataUrl;
+  link.download = 'walmartScreenshot.png';
+  link.click();
+}
+
 
 
