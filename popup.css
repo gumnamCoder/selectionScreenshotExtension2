@@ -1,0 +1,62 @@
+
+body {
+    width: 210px;
+    height: auto;
+    background-color: #fdfdfd;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+.wrapper {
+    width: 100%;
+    padding: 7px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    border-radius: 4px;
+    border: 0 !important;
+    font-family: 'Google Sans', Arial, sans-serif;
+    font-weight: 600;
+    padding: 7px 4px;
+    color: #fff;
+    background-color: #1fa2ff;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 12px;
+
+    transition: background-color .25s;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
+    text-decoration: none;
+    pointer-events: initial;
+    text-transform: uppercase;
+    cursor: pointer !important;
+    -webkit-font-smoothing: antialiased
+}
+
+.select-area-btn {
+    margin-bottom: 10px !important;
+}
+
+svg {
+    bottom: 20px;
+    margin-right: 5px;
+
+}
+.svg {
+    margin-bottom: -25px;
+}
+.menu .menu-item p {
+    font-size: 12px;
+}
+button:hover, button:hover svg path {
+    background-color:#1a73e811;
+    color: #3c99f7;
+    stroke: #3c99f7;
+}

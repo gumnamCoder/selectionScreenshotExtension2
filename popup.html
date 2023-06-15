@@ -1,40 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Screenshot Extension</title>
-  <style>
-    body {
-      width: 300px;
-      height: 150px;
-      padding: 10px;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-    }
-  </style>
-  <script src="popup.js"></script>
-</head>
-<body>
-  <h1>Screenshot Extension</h1>
-  <button id="selectButton">Select Area</button>
-</body>
-</html>
 
-<!-- <div class="menu">
-  <button type="button" id="btn-partial" class="select-area-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none">
-          <path d="M18.5 2H5.5A3.5 3.5 0 0 0 2 5.5v13A3.5 3.5 0 0 0 5.5 22h13A3.5 3.5 0 0 0 22 18.5V5.5A3.5 3.5 0 0 0 18.5 2z" />
+<head>
+  <script src="popup.js"></script>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="menu">
+      <button type="button" id="selectButton" class="select-area-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="1.5" fill="none">
+          <path
+            d="M18.5 2H5.5A3.5 3.5 0 0 0 2 5.5v13A3.5 3.5 0 0 0 5.5 22h13A3.5 3.5 0 0 0 22 18.5V5.5A3.5 3.5 0 0 0 18.5 2z" />
           <path d="M9 9h6v6H9z" />
         </svg>
-      capture selected area
-  </button>
-  <button type="button" id="btn-fullpage" class="menu-item visible-area-btn mb-10">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-          <path d="M10 4.833c-3.363 0-6.378 2.968-7.927 4.703.604.712 1.26 1.427 1.927 2.167C4.785 11.533 7.22 13.167 10 13.167s5.215-1.634 6.999-1.464c.667-.74 1.323-1.455 1.927-2.167C16.378 7.801 13.363 4.833 10 4.833zM10 11.5c-.86 0-1.667-.288-2.333-.818-.666-.53-1.052-1.26-1.09-2.014-.012-.267.014-.53.083-.782.13-.464.418-.86.823-1.137C7.193 5.014 8.555 4.5 10 4.5s2.807.514 3.527 1.249c.405.277.693.673.823 1.137.069.252.095.515.083.782-.038.754-.424 1.484-1.09 2.014C11.667 10.712 10.86 11 10 11zm0-2.5c.69 0 1.25-.56 1.25-1.25S10.69 7 10 7s-1.25.56-1.25 1.25S9.31 8.5 10 8.5z" fill="currentColor" fill-rule="evenodd"/>
-        </svg>
-      capture visible area
-  </button>
-</div>
-</div> -->
+        capture selected area
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>
