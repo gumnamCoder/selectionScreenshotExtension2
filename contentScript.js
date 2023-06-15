@@ -105,7 +105,7 @@ function captureElement(image, screenshotRect) {
       var dataUrl = canvas.toDataURL('image/' + format);
       downloadScreenshot(dataUrl);
       chrome.runtime.sendMessage({ action: 'openPopup', dataUrl: dataUrl });
-    }, 1000); // Adjust the delay (in milliseconds) as needed
+    }, 100); // Adjust the delay (in milliseconds) as needed
   };
 
   img.src = image;
